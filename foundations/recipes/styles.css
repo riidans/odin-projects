@@ -26,8 +26,20 @@ ul.equipment, ul.ingredients, ol.instructions {
     
 }
 
-.background-box {
-    background-color: #feb978
+.picture-box {
+    background-color: #feb978;
+    padding: 25px;
+}
+
+.link-box {
+    background-color: #feb978;
+    margin: auto 10px;
+    padding: 50px;
+    display: inline-block;
+}
+
+.links {
+    text-align: center
 }
 
 .link, .linkback {
@@ -35,9 +47,10 @@ ul.equipment, ul.ingredients, ol.instructions {
 }
 
 .linkback {
-    text-align: center;
-    margin: auto;
-    display: table;
+    background-color: #feb978;
+    margin: auto 10px;
+    padding: 50px;
+    display: inline-block;
 }
 
 .note {
