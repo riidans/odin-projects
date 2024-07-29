@@ -1,0 +1,45 @@
+body {
+    background-color:#fce2c2;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+img {
+    height: 360px;
+    width: auto;
+    text-align: center;
+    margin: auto;
+    display: flex;
+}
+
+h1 {
+    text-align:center;
+    font-size:36px;
+}
+
+h2, .description {
+    text-align: center;
+}
+
+ul.equipment, ul.ingredients, ol.instructions {
+    display: table;
+    margin: auto;
+    
+}
+
+.background-box {
+    background-color: #feb978
+}
+
+.link, .linkback {
+    color:#452818
+}
+
+.linkback {
+    text-align: center;
+    margin: auto;
+    display: table;
+}
+
+.note {
+    color: dimgray;
+}
