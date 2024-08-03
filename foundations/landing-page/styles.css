@@ -1,112 +1,197 @@
 * {
-
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
+
 body {
-    font-family: "Roboto"; 
-    padding: 0;
     margin: 0;
+    padding: 0;
     background-color: #1f2937
 }
 
-body > div {
-    height: 15rem;
-    padding: 7.5rem 15rem;
+button {
+    height: 2rem;
+    width: 8rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    flex-shrink: 0;
 }
 
-li {
-    list-style: none;
+.wrapper {
+    max-width: 65rem;
+    min-height: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
-a {
-    color: #e5e7eb;
-    font-size: 18px; 
-    text-decoration: none;
-}
-
-/* HEADER AND FOOTER */
-
+/* HEADER AND FOOTER SECTIONS */
 .header, .footer {
     background-color: #1f2937;
+}
+.header .wrapper, .footer .wrapper{
+    min-height: 3rem;
     display: flex;
-    height: 2rem;
-    padding: 1rem 15rem; 
-    align-items: center;
+    padding: 1rem 2rem;
     justify-content: space-between;
+    align-items: center;
 }
-
-.footer {
-    color: white;
-    justify-content: center; 
+.logo {
+    color: #f9faf8;
+    font-size: 24px;
+    font-weight: bold;
 }
-
 .links {
     display: flex;
     gap: 2rem;
 }
-
-.logo {
-    color: #f9faf8; 
-    font-size: 24px;
-    font-weight: bold;
+.links li {
+    list-style: none;
+}
+.links a {
+    color: #e5e7eb;
+    font-size: 18px;
+    text-decoration: none; 
+}
+.footer .wrapper {
+    color: white;
+    justify-content: center;
 }
 
 /* HERO SECTION */
-
-.hero {
-    background-color: #1f2937;
+.hero .wrapper {
     color: white;
+    padding: 7.5rem 2rem;
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
-
-.hero-container {
-    display: flex;
+.hero-text-container {
     flex: 1;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 1rem;
 }
-
-.hero-container > h1 {
+.hero-text-container h1 {
     font-size: 48px;
-    font-weight: bolder;
-    color: #f9faf8;
+    font-weight: extra-bold;
+    color: #F9FAF8;
     margin: 0;
 }
-
-.hero-container > p {
+.hero-text-container p {
     font-size: 18px;
     color: #e5e7eb;
+    margin: 0;
 }
-
-.hero-signup {
-    width: 8rem;
-    height: 2rem;
+.hero-text-container button {
     background-color: #5f82ee;
     color: white;
-    font-weight: bold;
     border: none;
-    border-radius: 0.5rem;
 }
-
-.placeholder {
+.hero-placeholder {
     flex: 1;
     display: flex;
     background-color: gray;
     justify-content: center;
     align-items: center;
+    min-width: 20rem;
+    min-height: 15rem;
 }
 
 /* INFORMATION SECTION */
-
 .info {
     background-color: white;
 }
+.info-header-container {
+    height: 7.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info-container {
+    display: flex;
+    padding-bottom: 7.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.info-card {
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.info-placeholder {
+    width: 12rem;
+    height: 12rem;
+    border: solid #5f82ee 0.25rem;
+    border-radius: 1rem;
+}
 
+/* QUOTE SECTION */
 .quote {
     background-color: #e5e7eb
 }
+.quote .wrapper {
+    padding: 7.5rem 2rem;
+}
+.content {
+    font-size: 36px;
+    font-style: italic;
+    color: #1f2937
+}
+.speaker {
+    text-align: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1f2937
+}
 
+/* CALL */
 .call {
     background-color: white;
+    padding: 7.5rem 0;
 }
+.call .wrapper {
+    min-height: auto;
+}
+.call-container {
+    padding: 2rem;
+    background-color: #5f82ee;
+    color: white;
+    border-radius: 1rem;
+}
+.call-container .inner-wrapper {
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+.call-text-container {
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.call-container h1 {
+    font-size: 24px;
+    margin: 0;
+}
+.call-container p {
+    margin: 0;
+}
+.call-container button {
+    border: solid white;
+    background-color: #5f82ee;
+    color: white;
+} 
+
+
+
+
 
