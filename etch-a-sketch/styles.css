@@ -1,22 +1,52 @@
 * {
-    font-family: "Roboto" sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .wrapper {
     display: flex;
+    justify-content: space-between;
+    align-content: center;
+    max-width: 60rem;
+    margin: auto;
+}
+
+.header {
+    display: flex;
     justify-content: center;
-    text-align: center; 
-    gap: 1rem;
+    font-size: 1.25rem;
 }
 
 .options {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+
+button {
+    height: 4rem;
+    width: 16rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+#color {
+    border: solid black 2px;
+    margin: 6rem auto 2rem auto;
+    height: 8rem;
+    width: 8rem;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.color-sub-block {
+    width: 4rem;
+    height: 4rem;
 }
 
 .board {
-    height: 45rem;
-    width: 45rem;
+    height: 40rem;
+    width: 40rem;
     border: solid black 2px;
     display: flex;
     flex-wrap: wrap;
@@ -26,3 +56,4 @@
     box-sizing: border-box;
     border: solid black 1px;
 }
+
