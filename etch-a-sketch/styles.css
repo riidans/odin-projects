@@ -1,0 +1,28 @@
+* {
+    font-family: "Roboto" sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center; 
+    gap: 1rem;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.board {
+    height: 45rem;
+    width: 45rem;
+    border: solid black 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pixel {
+    box-sizing: border-box;
+    border: solid black 1px;
+}
