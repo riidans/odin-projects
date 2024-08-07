@@ -1,4 +1,4 @@
-function initializeBoard(boardLength = 16, mode = "default") {
+function initializeBoard(boardLength = 16) {
 
     // Delete all current pixels
     const pixels = document.querySelectorAll(".pixel")
@@ -13,32 +13,23 @@ function initializeBoard(boardLength = 16, mode = "default") {
     for (i = 0; i < boardLength**2; i++) {
         const pixel = document.createElement("div")
         pixel.classList.add("pixel")
-
         pixel.style.width = pixelSize + 'px'
         pixel.style.height = pixelSize + 'px'
-        
-        if (mode == "default") {
-            blocks.forEach((block) => {
-                block.style.backgroundColor = "black"
-            })
-            pixel.addEventListener("mouseover", () => {pixel.style.backgroundColor = "black"})
-        }
-        else if (mode == "random") {
-            blocks.forEach((block) => {
-                block.style.backgroundColor = randomizeColor()
-            })
-            pixel.addEventListener ("mouseover", () => {pixel.style.backgroundColor = randomizeColor()})
-        }
-        else if (mode == "darken") {
-            blocks.forEach((block) => {
-                block.style.backgroundColor = "rgba(0, 0, 0, 0.2)"
-            })
-            pixel.style.backgroundColor = "rgba(0, 0, 0, 0.0)"
-            pixel.addEventListener ("mouseover", () => {pixel.style.backgroundColor = darkenColor(pixel)})
-        }
-
+        pixel.style.backgroundColor = "rgba(255, 255, 255, 1)" // color white
+        pixel.addEventListener ("mouseover", () => {modeHandler(pixel)})
         board.appendChild(pixel)
+    }
+}
 
+function modeHandler(pixel) {
+    if (mode == "default") {
+        pixel.style.backgroundColor = "rgba(0, 0, 0, 0)" // color black
+    }
+    else if (mode == "random") {
+        pixel.style.backgroundColor = randomizeColor()
+    }
+    else if (mode == "darken") {
+        pixel.style.backgroundColor = darkenColor(pixel.style.backgroundColor)
     }
 }
 
@@ -54,7 +45,7 @@ function resizeBoard() {
 function resetBoard() {
     const pixels = document.querySelectorAll(".pixel")
     pixels.forEach((pixel) => {
-        pixel.style.removeProperty('background-color')
+        pixel.style.backgroundColor = "rgba(255, 255, 255, 1)"
     })
 }
 
@@ -62,28 +53,47 @@ function randomizeColor() {
     const r = Math.floor(Math.random() * 255)
     const g = Math.floor(Math.random() * 255)
     const b = Math.floor(Math.random() * 255)
-    return `rgb(${r}, ${g}, ${b})`
+    return `rgba(${r}, ${g}, ${b}, 1)`
 }
 
-function darkenColor(pixel) {
-    const rgb = pixel.style.backgroundColor
-    const opacity = parseFloat(rgb.slice(14, -1)) 
-    if (opacity != 1) {
-        return `rgba(0, 0, 0, ${opacity + 0.1})`
+function darkenColor(rgb) {
+    // This program uses opacity to darken colors by letting the 
+    // black background "bleed" through the pixel 
+
+    // Parses rgb string
+    const arr = rgb.substring(rgb.indexOf("(")+1, rgb.indexOf(")")).split(", ")
+    let opacity = parseFloat(arr[3]) 
+
+    // Do not change color if the color is already black
+    if (opacity == 0) { return }
+
+    const r = parseFloat(arr[0])
+    const g = parseFloat(arr[1])
+    const b = parseFloat(arr[2])
+    
+    // CSS converts 'rgba(255, 255, 255, 1)' (this is white) to 'rgb(255, 255, 255)',
+    // so if the rgb string is in this form, we use an opacity of 1 by default.
+    if (isNaN(opacity)) {
+        opacity = 1;
     }
+
+    return `rgb(${r}, ${g}, ${b}, ${opacity - 0.1})`
 }
 
 // Initial 16x16 setup
 const board = document.querySelector(".board")
 const boardSize = board.clientWidth
 
-let currentLength
+let currentLength, mode;
+mode = "default"
 
 const block = document.querySelector("#color")
 const blocks = document.querySelectorAll(".color-sub-block")
+blocks.forEach((block) => {
+    block.style.backgroundColor = "black"
+})
 
 initializeBoard()
-
 
 // Button listeners
 const resize = document.querySelector("#resize")
@@ -93,10 +103,25 @@ const reset = document.querySelector("#reset")
 reset.addEventListener("click", resetBoard)
 
 const defaultMode = document.querySelector("#default")
-defaultMode.addEventListener("click", () => {initializeBoard(currentLength)})
+defaultMode.addEventListener("click", () => {
+    mode = "default"
+    blocks.forEach((block) => {
+        block.style.backgroundColor = "black"
+    })
+})
 
 const randomMode = document.querySelector("#random")
-randomMode.addEventListener("click", () => {initializeBoard(currentLength, "random")})
+randomMode.addEventListener("click", () => {
+    mode = "random"
+    blocks.forEach((block) => {
+        block.style.backgroundColor = randomizeColor()
+    })
+})
 
 const darkenMode = document.querySelector("#darken")
-darkenMode.addEventListener("click", () => {initializeBoard(currentLength, "darken")})
+darkenMode.addEventListener("click", () => {
+    mode = "darken"
+    blocks.forEach((block) => {
+        block.style.backgroundColor = "rgba(0, 0, 0, 0.2)"
+    })
+})
