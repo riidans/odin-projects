@@ -1,5 +1,13 @@
-.display {
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+h1, h4 {
+    margin: 0;
+}
+.div-display {
     width: 30rem;
     height: 10rem;
     border: solid black;
+    text-align: right;
 }
