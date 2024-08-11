@@ -46,7 +46,7 @@ function handleInputs(value, isOperator) {
             [num1, num2, operator] = deleteInput(num1, num2, operator) 
         }
         else {
-            [num1, num2, operator] = isOperation(num1, num2, operator, value)
+            [num1, num2, operator, expression] = isOperation(num1, num2, operator, value)
         }
     }
 
@@ -64,8 +64,17 @@ function handleDisplay(num1, num2, operator) {
     if (num1 === "") {
         display.textContent = 0
     }
+    else if (num2 === "") {
+        display.textContent = `${num1} ${operatorSymbols[operator]}`
+    }
     else {
-        display.textContent = `${num1} ${operatorSymbols[operator]} ${num2}`
+        display.textContent = `${num2}`
+        subdisplay.textContent = `${num1} ${operatorSymbols[operator]}`
+    }
+
+    // Displays "history"
+    if (expression) {
+        subdisplay.textContent = expression
     }
 }   
 
@@ -133,6 +142,7 @@ function isValidDecimal(num) {
 }
 
 function isOperation(num1, num2, operator, value) {    
+    var expression = false
     // Store operator if no operator exists
     if (num1 && !operator && !num2 && (value != "equals")) {
         operator = value
@@ -145,6 +155,7 @@ function isOperation(num1, num2, operator, value) {
 
     // Otherwise, complete the operation
     else {
+        expression = `${num1} ${operatorSymbols[operator]} ${num2} =`
         num1 = (+operate(parseFloat(num1), parseFloat(num2), operator)
                                             .toFixed(5))
                                             .toString()
@@ -152,13 +163,14 @@ function isOperation(num1, num2, operator, value) {
         if (value == "equals") { operator = "" }
         else { operator = value }
     }
-    return [num1, num2, operator]
+    return [num1, num2, operator, expression]
 }
 
-let num1, num2, operator, expression
+let num1, num2, operator, operation
 num1 = num2 = operator = ""
 
 const display = document.querySelector(".display")
+const subdisplay = document.querySelector(".sub-display")
 
 const numberButtons = document.querySelectorAll(".num")
 numberButtons.forEach((button) => {

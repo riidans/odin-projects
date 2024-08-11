@@ -2,12 +2,76 @@
     font-family: "Roboto", sans-serif;
 }
 
+body {
+    background-color: #2b2a33
+}
+
 h1, h4 {
     margin: 0;
 }
+
+h1 {
+    font-size: 4rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
 .div-display {
-    width: 30rem;
-    height: 10rem;
-    border: solid black;
+    width: 24rem;
+    height: 6rem;
+    background-color: #241f1c;
+    color: white;
     text-align: right;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.container {
+    max-width: 24rem;
+    margin: auto;   
+    background-color: #241f1c;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: solid white 1px;
+}
+
+button {
+    width: 6rem;
+    height: 5rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: none;
+    border: solid black 1px;
+}
+
+button:hover {
+    border: solid white 1px;
+}
+
+.buttons {
+    display: flex;
+}
+
+.number-buttons, .operation-buttons, .delete-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.delete-buttons > * {
+    flex-grow: 1;
+}
+
+.num {
+    background-color: #3f2d30;
+}
+.op {
+    background-color: #3f3a3e;
+}
+
+#equals, #clear, #delete {
+    background-color: #dd765d;
+    color: black;
 }
